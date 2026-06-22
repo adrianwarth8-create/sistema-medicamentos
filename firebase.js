@@ -49,7 +49,13 @@ const auth = getAuth(app);
 
 
 
-// Firestore
+// EXPORTAR LOGIN
+
+export { auth };
+
+
+
+// Deixar disponível para o script.js
 
 window.db = db;
 
@@ -63,10 +69,6 @@ window.deleteDoc = deleteDoc;
 
 window.doc = doc;
 
-
-// Login
-
-window.auth = auth;
 
 
 console.log("🔥 Firebase conectado com Login");
