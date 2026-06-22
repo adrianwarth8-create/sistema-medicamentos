@@ -7,19 +7,9 @@ import {
 onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 
-import {
-onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
-
-
-import {
-auth
-} from "./firebase.js";
-
 
 
 let baixas = [];
-
 
 
 
@@ -30,7 +20,7 @@ onAuthStateChanged(auth, (usuario)=>{
 
     if(!usuario){
 
-        window.location =
+        window.location.href =
         "login.html";
 
         return;
@@ -68,8 +58,7 @@ async function registrarBaixa() {
 
 
 
-
-    if (!militar || !medicamento || quantidade <= 0) {
+    if(!militar || !medicamento || quantidade <= 0){
 
 
         alert("Preencha todos os campos");
@@ -83,7 +72,7 @@ async function registrarBaixa() {
 
 
     await addDoc(
-        collection(db, "baixasMedicamentos"),
+        collection(db,"baixasMedicamentos"),
         {
 
             militar,
@@ -94,7 +83,8 @@ async function registrarBaixa() {
 
             observacao,
 
-            data: new Date().toLocaleString()
+            data:
+            new Date().toLocaleString()
 
         }
 
@@ -115,6 +105,7 @@ async function registrarBaixa() {
 
     carregarBaixas();
 
+
 }
 
 
@@ -123,13 +114,14 @@ async function registrarBaixa() {
 
 
 
-async function carregarBaixas() {
+async function carregarBaixas(){
+
 
 
     const snap =
-        await getDocs(
-            collection(db, "baixasMedicamentos")
-        );
+    await getDocs(
+        collection(db,"baixasMedicamentos")
+    );
 
 
 
@@ -137,7 +129,7 @@ async function carregarBaixas() {
 
 
 
-    snap.forEach(docSnap => {
+    snap.forEach(docSnap=>{
 
 
         baixas.push({
@@ -164,11 +156,12 @@ async function carregarBaixas() {
 
 
 
-async function excluirBaixa(id) {
+
+async function excluirBaixa(id){
 
 
 
-    if (!confirm("Excluir registro?")) {
+    if(!confirm("Excluir registro?")){
 
         return;
 
@@ -179,14 +172,17 @@ async function excluirBaixa(id) {
 
     await deleteDoc(
 
-        doc(db, "baixasMedicamentos", id)
+        doc(
+            db,
+            "baixasMedicamentos",
+            id
+        )
 
     );
 
 
 
     carregarBaixas();
-
 
 
 }
@@ -197,12 +193,13 @@ async function excluirBaixa(id) {
 
 
 
-function renderizar() {
+
+function renderizar(){
 
 
 
     const lista =
-        document.getElementById("listaBaixas");
+    document.getElementById("listaBaixas");
 
 
 
@@ -211,8 +208,7 @@ function renderizar() {
 
 
 
-    baixas.reverse().forEach(item => {
-
+    baixas.reverse().forEach(item=>{
 
 
         lista.innerHTML += `
@@ -221,27 +217,27 @@ function renderizar() {
         <li>
 
 
-            <b>👤 ${item.militar}</b><br>
+        <b>👤 ${item.militar}</b><br>
 
 
-            💊 ${item.medicamento}<br>
+        💊 ${item.medicamento}<br>
 
 
-            🔢 Quantidade: ${item.quantidade}<br>
+        🔢 Quantidade: ${item.quantidade}<br>
 
 
-            📝 ${item.observacao || "-"}<br>
+        📝 ${item.observacao || "-"}<br>
 
 
-            📅 ${item.data}<br><br>
+        📅 ${item.data}<br><br>
 
 
 
-            <button onclick="excluirBaixa('${item.id}')">
+        <button onclick="excluirBaixa('${item.id}')">
 
-                🗑️ Excluir
+        🗑️ Excluir
 
-            </button>
+        </button>
 
 
 
@@ -264,10 +260,10 @@ function renderizar() {
 
 
 
-// RELATÓRIO PDF
 
+// PDF
 
-function gerarRelatorio() {
+function gerarRelatorio(){
 
 
 
@@ -283,7 +279,6 @@ function gerarRelatorio() {
 
 
     pdf.setFontSize(16);
-
 
 
     pdf.text(
@@ -303,8 +298,7 @@ function gerarRelatorio() {
 
 
 
-    baixas.forEach(item => {
-
+    baixas.forEach(item=>{
 
 
         let nome =
@@ -315,11 +309,10 @@ function gerarRelatorio() {
         if(!totais[nome]){
 
 
-            totais[nome] = 0;
+            totais[nome]=0;
 
 
         }
-
 
 
 
@@ -333,35 +326,28 @@ function gerarRelatorio() {
 
 
 
-
     let y = 30;
 
 
 
-
-    Object.keys(totais).forEach(med => {
-
+    Object.keys(totais).forEach(med=>{
 
 
         pdf.text(
 
-            `${med} ........ Quantidade: ${totais[med]}`,
+        `${med} ........ Quantidade: ${totais[med]}`,
 
-            15,
+        15,
 
-            y
+        y
 
         );
-
 
 
         y += 10;
 
 
-
     });
-
-
 
 
 
@@ -372,6 +358,7 @@ function gerarRelatorio() {
 
 
 }
+
 
 
 
@@ -393,5 +380,5 @@ gerarRelatorio;
 
 
 console.log(
-"Sistema de medicamentos carregado"
+"Sistema carregado"
 );
