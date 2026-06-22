@@ -1,51 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Sistema de Baixa de Medicamentos</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
 <h1>💊 Sistema de Baixa de Medicamentos</h1>
 
+
 <div class="formulario">
+
 
 <input
 id="militar"
 placeholder="Nome do Militar">
 
+
 <input
 id="medicamento"
 placeholder="Medicamento">
+
 
 <input
 id="quantidade"
 type="number"
 placeholder="Quantidade">
 
+
 <input
 id="observacao"
 placeholder="Observação">
 
+
 <button onclick="registrarBaixa()">
+
 Registrar Baixa
+
 </button>
+
+
+<button onclick="gerarRelatorio()">
+
+📄 Gerar Relatório PDF
+
+</button>
+
 
 </div>
 
+
 <hr>
+
 
 <h2>Registros</h2>
 
+
 <ul id="listaBaixas"></ul>
 
+
+
+<!-- Biblioteca para gerar PDF -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+
+<!-- Firebase -->
+
 <script type="module" src="firebase.js"></script>
+
+
+<!-- Script principal -->
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
