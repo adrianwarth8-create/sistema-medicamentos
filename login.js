@@ -88,20 +88,37 @@ alert(
 window.criarConta = async function(){
 
 
-
 const email =
-document.getElementById("email").value;
+document.getElementById("email").value.trim();
 
 
 const senha =
-document.getElementById("senha").value;
+document.getElementById("senha").value.trim();
 
 
 
+if(!email){
 
-if(!email || !senha){
+    alert("Digite um email");
 
-    alert("Preencha email e senha");
+    return;
+
+}
+
+
+if(!email.includes("@")){
+
+    alert("Digite um email válido");
+
+    return;
+
+}
+
+
+
+if(senha.length < 6){
+
+    alert("A senha precisa ter no mínimo 6 caracteres");
 
     return;
 
@@ -126,8 +143,13 @@ await createUserWithEmailAndPassword(
 
 
 alert(
-"Conta criada! Agora pode entrar."
+"Conta criada com sucesso!"
 );
+
+
+
+window.location.href =
+"index.html";
 
 
 
@@ -136,8 +158,11 @@ alert(
 catch(e){
 
 
+console.log(e);
+
+
 alert(
-e.message
+"Erro: " + e.code
 );
 
 
