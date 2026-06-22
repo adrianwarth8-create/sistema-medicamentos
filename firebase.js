@@ -1,5 +1,5 @@
-import { 
-    initializeApp 
+import {
+    initializeApp
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 
@@ -44,31 +44,32 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-
 const auth = getAuth(app);
 
 
 
-// EXPORTAR LOGIN
+// Exporta tudo para o sistema
 
-export { auth };
+export {
+
+    db,
+
+    auth,
+
+    collection,
+
+    addDoc,
+
+    getDocs,
+
+    deleteDoc,
+
+    doc
+
+};
 
 
 
-// Deixar disponível para o script.js
-
-window.db = db;
-
-window.collection = collection;
-
-window.addDoc = addDoc;
-
-window.getDocs = getDocs;
-
-window.deleteDoc = deleteDoc;
-
-window.doc = doc;
-
-
-
-console.log("🔥 Firebase conectado com Login");
+console.log(
+"🔥 Firebase conectado corretamente"
+);
