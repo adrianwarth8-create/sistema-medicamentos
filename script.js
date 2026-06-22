@@ -368,17 +368,14 @@ function gerarRelatorio(){
 
 window.registrarBaixa =
 registrarBaixa;
-
-
 window.excluirBaixa =
 excluirBaixa;
-
-
 window.gerarRelatorio =
 gerarRelatorio;
-
-
-
 console.log(
 "Sistema carregado"
 );
+
+window.registrarBaixa = registrarBaixa;
+window.excluirBaixa = excluirBaixa;
+window.gerarRelatorio = gerarRelatorio;
