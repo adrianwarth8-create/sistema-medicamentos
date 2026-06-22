@@ -1,15 +1,19 @@
-import { 
-getAuth,
+import {
 signInWithEmailAndPassword,
 createUserWithEmailAndPassword
 }
 from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 
 
-import { auth }
+import {
+auth
+}
 from "./firebase.js";
 
 
+
+
+// ENTRAR
 
 window.entrar = async function(){
 
@@ -23,37 +27,66 @@ document.getElementById("senha").value;
 
 
 
-try {
+if(!email || !senha){
+
+    alert("Preencha email e senha");
+
+    return;
+
+}
+
+
+
+try{
 
 
 await signInWithEmailAndPassword(
-auth,
-email,
-senha
+
+    auth,
+
+    email,
+
+    senha
+
 );
 
 
-window.location =
+
+window.location.href =
 "index.html";
+
 
 
 }
 
 catch(e){
 
+
+console.log(e);
+
+
 alert(
-"Login inválido"
+"Email ou senha incorretos"
 );
 
-}
-
 
 }
 
 
+}
+
+
+
+
+
+
+
+
+// CRIAR CONTA
 
 
 window.criarConta = async function(){
+
 
 
 const email =
@@ -65,28 +98,48 @@ document.getElementById("senha").value;
 
 
 
+
+if(!email || !senha){
+
+    alert("Preencha email e senha");
+
+    return;
+
+}
+
+
+
+
 try{
 
 
 await createUserWithEmailAndPassword(
-auth,
-email,
-senha
+
+    auth,
+
+    email,
+
+    senha
+
 );
+
 
 
 alert(
-"Conta criada com sucesso"
+"Conta criada! Agora pode entrar."
 );
+
 
 
 }
 
 catch(e){
 
+
 alert(
 e.message
 );
+
 
 }
 
