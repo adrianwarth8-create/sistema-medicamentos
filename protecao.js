@@ -8,16 +8,13 @@ auth
 } from "./firebase.js";
 
 
-
 onAuthStateChanged(auth, (usuario)=>{
 
 
 if(!usuario){
 
-
-window.location =
+window.location.href =
 "login.html";
-
 
 }
 
