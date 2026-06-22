@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>Sistema de Baixa de Medicamentos</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>💊 Sistema de Baixa de Medicamentos</h1>
+
+<div class="formulario">
+
+<input
+id="militar"
+placeholder="Nome do Militar">
+
+<input
+id="medicamento"
+placeholder="Medicamento">
+
+<input
+id="quantidade"
+type="number"
+placeholder="Quantidade">
+
+<input
+id="observacao"
+placeholder="Observação">
+
+<button onclick="registrarBaixa()">
+Registrar Baixa
+</button>
+
+</div>
+
+<hr>
+
+<h2>Registros</h2>
+
+<ul id="listaBaixas"></ul>
+
+<script type="module" src="firebase.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
